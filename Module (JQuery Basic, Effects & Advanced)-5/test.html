@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"
+    integrity="sha512-ju6u+4bPX50JQmgU97YOGAXmRMrD9as4LE05PdC3qycsGQmjGlfm041azyB1VfCXpkpt1i9gqXCT6XuxhBJtKg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .slider-container {
+            width: 900px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto; /* Add this line to center the slider container */
+        }
+        .slider {
+            width: 2700px; /* 900px * 3 (number of images) */
+            position: absolute;
+            display: flex;
+        }
+        .slider img {
+            width: 900px;
+            height: 200px;
+            margin: 0 auto;
+            display: block;
+            object-fit: cover;
+        }
+        button {
+            height: 30px;
+            width: 100px;
+            position: absolute;
+            top: 90px;
+            z-index: 1;
+        }
+        .next {
+            right: 10px;
+        }
+        .prev {
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slider">
+            <img src="imge1.png" alt="Image 1">
+            <img src="imge2.jpg" alt="Image 2">
+            <img src="imge3.png" alt="Image 3">
+        </div>
+    </div>
+    <button class="prev"><i class="fa-sharp fa-solid fa-angle-left"></i></button>
+    <button class="next"><i class="fa-sharp fa-solid fa-angle-right"></i></button>
+
+    <script>
+        $(document).ready(function(){
+            var currentIndex = 0;
+
+            $(".next").click(function(){
+                if (currentIndex < 2) {
+                    currentIndex++;
+                    $(".slider").animate({left: '-=' + 900 + 'px'}, "slow");
+                }
+            });
+
+            $(".prev").click(function(){
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    $(".slider").animate({left: '+=' + 900 + 'px'}, "slow");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
